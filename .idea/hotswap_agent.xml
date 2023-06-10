@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="HotSwapAgentPluginSettingsProvider">
+    <option name="agentPath" value="C:\Users\ACER\AppData\Roaming\JetBrains\IntelliJIdea2022.3\plugins\hotswap-agent-intellij-plugin\lib\agent\hotswap-agent-1.4.1.jar" />
+    <option name="enableAgentForAllConfiguration" value="true" />
+    <option name="selectedRunConfigurations">
+      <set>
+        <option value="Tomcat 10.0.261" />
+      </set>
+    </option>
+  </component>
+</project>
