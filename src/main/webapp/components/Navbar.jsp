@@ -37,21 +37,24 @@
 
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#cart-item"><i class="ri-shopping-cart-line" style="font-size: 22px"  ><span style="font-size: 22px" class="cart-items" >{}</span> </i></a>
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#cart-item"><i
+                                class="ri-shopping-cart-line" style="font-size: 22px"><span style="font-size: 22px"
+                                                                                            class="cart-items">{}</span>
+                        </i></a>
                     </li>
-                <%
-                    if (usernav != null) {
-                %>
-                <li class="nav-item">
-                  <a class="nav-link "href="LogOutServlet"> Log Out </a>
-                </li>
+                    <%
+                        if (usernav != null) {
+                    %>
+                    <li class="nav-item">
+                        <a class="nav-link " href="LogOutServlet"> Log Out </a>
+                    </li>
 
-                <% } else {%>
-                         <li class="nav-item">
+                    <% } else {%>
+                    <li class="nav-item">
                         <a class="nav-link " href="Sign-Up.jsp" style="text-decoration: none"> Sign UP</a>
                     </li>
-                <% }
-                %>
+                    <% }
+                    %>
                 </ul>
 
             </div>
@@ -60,20 +63,19 @@
 </section>
 
 
-
 <!-- Cart Modal -->
 <div class="modal fade" id="cart-item" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="head text-center"><h1 class="text-center" >YOUR CART</h1></div>
+                <div class="head text-center"><h1 class="text-center">YOUR CART</h1></div>
 
             </div>
             <div class="modal-body">
 
-                   <div class="card-body">
+                <div class="card-body">
 
-                 </div>
+                </div>
 
             </div>
             <div class="modal-footer">
@@ -84,13 +86,6 @@
     </div>
 </div>
 <script defer>
-
-
-    $( document ).ready(function() {
-        console.log( "ready!" );
-        updateCart();
-    });
-
 
     function add_to_cart(productsId, productsName, productsPrise) {
         let cart = localStorage.getItem("cart");
@@ -140,21 +135,47 @@
     function updateCart() {
         let cartString = localStorage.getItem("cart");
         let cart = JSON.parse(cartString);
-        if (cart == null || cart.length === 0 ){
+        if (cart == null) {
             console.log("cart is empty  & update cart method");
-            // document.getElementsByClassName(".card-body").innerTEXT = "Cart Have Not Any Item";
-            // document.getElementsByClassName(".cart-items").innerText = "{0}";
-            $ (" .cart-items").html("{ 0 }");
-            // $ (" .card-body ").html("<h4>Cart have not any item </h4>");
+            $(".cart-items").html("{ 0 }");
             $(".card-body").html("<b>Hello world!</b>");
             $(".check-out-btn").addClass('btn btn-danger');
-        }else {
-            console.log(cart)
+        } else {
+             console.log(cart)
             $(".cart-items").html(${('cart.length')}) ;
+            let table = `
+            <table class ='table'>
+            <thread class ='thread-light'>
+            <tr>
+            <th> Item Name</th>
+            <th> Price</th>
+            <th> Quantity</th>
+            <th> Total Prise</th>
+            <th> Action</th>
+            </tr>
+            </thread>
+
+
+            `
+            cart.map((item) => {
+                console.log(item);
+                table +=` <tr>
+                <td> `${item.productName}` </td>
+                <td> ${item.productsPrise} </td>
+                <td> ${item.productQuantity} </td>
+                <td> ${item.productQuantity * productPrise} </td>
+               </tr>`
+            });
+
+            table = table + ' </table>';
+            $(".card-body").html(table);
         }
     }
 
-
+    $(document).ready(function () {
+        console.log("ready!");
+        updateCart();
+    });
 
 
 </script>

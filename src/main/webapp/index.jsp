@@ -19,8 +19,6 @@
 <%
     String message = (String) session.getAttribute("noProduct");
     if(message!=null){
-
-//    print
 %>
 <script>
     swal("Error!", "No Product Found!", "error");
@@ -81,14 +79,11 @@
                     </div>
                 </div>
 
-
-
                   <%}
                     if (allProducts.size() == 0){
                         session.setAttribute("noProduct","No Product Found");
                         response.sendRedirect("index.jsp");
                     }
-
                 %>
                 </div>
             </div>
