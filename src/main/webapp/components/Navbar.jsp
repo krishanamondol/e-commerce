@@ -103,7 +103,7 @@
         } else {
             let productCart = JSON.parse(cart);
             let oldProduct = productCart.find((item) => item.productId === productsId)
-            console.log(oldProduct)
+             console.log(oldProduct)
             if (oldProduct) {
                 oldProduct.productQuantity = oldProduct.productQuantity + 1;
                 productCart.map((item) => {
@@ -138,10 +138,15 @@
         if (cart == null) {
             console.log("cart is empty  & update cart method");
             $(".cart-items").html("{ 0 }");
-            $(".card-body").html("<b>Hello world!</b>");
+            $(".card-body").html('<p>No Cart Item Found</p>');
             $(".check-out-btn").addClass('btn btn-danger');
         } else {
-             console.log(cart)
+             // console.log(cart)
+
+            cart.map(arr => {
+                console.log(arr)
+
+            })
             $(".cart-items").html(${('cart.length')}) ;
             let table = `
             <table class ='table'>
@@ -157,10 +162,13 @@
 
 
             `
-            cart.map((item) => {
-                console.log(item);
-                table +=` <tr>
-                <td> `${item.productName}` </td>
+
+
+            cart.map((data) => {
+                // console.log(item);
+
+                table +=`<tr>
+                <td> $({data:cart.productName}) <p>Acer Aspair 5 515 i3 11th gen windows 11 </p></td>
                 <td> ${item.productsPrise} </td>
                 <td> ${item.productQuantity} </td>
                 <td> ${item.productQuantity * productPrise} </td>
@@ -176,8 +184,6 @@
         console.log("ready!");
         updateCart();
     });
-
-
 </script>
 
 
